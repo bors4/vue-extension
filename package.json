@@ -1,0 +1,28 @@
+{
+  "name": "vue-extension",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "vue": "^3.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/eslint-config-prettier": "10.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-vue": "^10.5.1",
+    "prettier": "3.6.2",
+    "vite": "^7.1.10",
+    "vite-plugin-web-extension": "^4.0.0",
+    "vue-eslint-parser": "^10.2.0",
+    "webextension-polyfill": "^0.10.0"
+  }
+}
