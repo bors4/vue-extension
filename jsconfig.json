@@ -7,13 +7,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src/**/*.js",
-    "src/**/*.vue",
-    "popup.js"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*.js", "src/**/*.vue", "popup.js"],
+  "exclude": ["node_modules", "dist"]
 }

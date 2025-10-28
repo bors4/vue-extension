@@ -1,9 +1,9 @@
 <template>
-    <button class="button-confirm" @click="emitConfirm">Change</button>
+  <button class="button-confirm" @click="emitConfirm">Change</button>
 </template>
 
 <script setup>
-  const emit = defineEmits(['confirm']);
+const emit = defineEmits(['confirm']);
 
 const emitConfirm = () => {
   emit('confirm');

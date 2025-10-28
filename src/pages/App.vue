@@ -9,7 +9,6 @@
 <script setup>
 import ExtensionHeader from "./components/ExtensionHeader.vue";
 import ListOperations from './components/ListOperations.vue';
-
 </script>
 
 <style>

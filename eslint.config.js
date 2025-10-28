@@ -94,7 +94,7 @@ export default [
       'no-var': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
       'no-param-reassign': 'error',
       'class-methods-use-this': 'off',
       // Отключаем правила, которые могут конфликтовать с Prettier
@@ -113,7 +113,7 @@ export default [
     files: ['**/*.test.js', '**/*.spec.js'],
     rules: {
       'no-console': 'off',
-      'max-len': ['error', { code: 120 }],
+      'max-len': ['error', {code: 120}],
     },
   },
 

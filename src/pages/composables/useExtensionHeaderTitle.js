@@ -1,9 +1,9 @@
-import { ref } from 'vue';
+import {ref} from 'vue';
 
-export function useShowExtensionHeader (extensionHeaderTitle) {
-    const title = ref(extensionHeaderTitle);
-    
-    return {
-        title
-    };
+export function useShowExtensionHeader(extensionHeaderTitle) {
+  const title = ref(extensionHeaderTitle);
+
+  return {
+    title,
+  };
 }

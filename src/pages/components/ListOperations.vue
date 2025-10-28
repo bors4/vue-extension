@@ -15,7 +15,7 @@
         {{ status.text }}
       </option>
     </select>
-    <ButtonConfirm></ButtonConfirm>
+    <ButtonConfirm @confirm="handleChangeStatus"></ButtonConfirm>
   </div>
 </template>
 
@@ -23,11 +23,13 @@
 import { ref } from "vue";
 import ButtonConfirm from './ButtonConfirm.vue';
 import { LANGUAGES, ACC_STATUS } from '../constants/parameters';
-import {changeLanguage } from '../composables/useSelectedLanguage';
+import { changeLanguage } from '../composables/useSelectedLanguage';
+import { changeAccStatus } from "../composables/useChangeAccountStatus";
 
 const selectedLanguage = ref('en');
 const selectedStatus = ref('light');
 
 const handleChangeLanguage = () => changeLanguage(selectedLanguage.value);
+const handleChangeStatus = () => changeAccStatus(selectedStatus.value);
 
 </script>

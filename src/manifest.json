@@ -23,11 +23,6 @@
     "default_popup": "src/popup.html",
     "default_icon": "icon/16.png"
   },
-  "permissions": [
-    "scripting",
-    "activeTab"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ]
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"]
 }
