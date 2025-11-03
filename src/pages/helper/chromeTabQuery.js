@@ -1,37 +1,44 @@
 /* eslint-disable no-console */
-import {executePiniaCommand} from '../helper/executePiniaCommands.js';
+import {executePiniaCommand} from '../helper/executePiniaCommands';
 
 export function chromeTabQuery(selectedParameter, appModule, queryParameter) {
+  const command = {
+    action: 'callPiniaAction',
+    store: appModule,
+    method: queryParameter,
+    args: selectedParameter.value,
+  };
+  // console.log(command)
   const queryOptions = {active: true, currentWindow: true};
-  chrome.tabs.query(queryOptions, (tabs) => {
-    if (tabs[0]) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query(queryOptions, (tabs) => {
+      if (!tabs[0]) {
+        reject({status: 'error', message: 'No active tab found.'});
+        return;
+      }
+
       chrome.scripting.executeScript(
         {
           target: {tabId: tabs[0].id},
           world: 'MAIN',
           func: executePiniaCommand,
-          args: [selectedParameter.value, appModule, queryParameter],
+          args: [command],
         },
         (injectionResults) => {
           if (chrome.runtime.lastError) {
             console.error('Script injection failed:', chrome.runtime.lastError.message);
-            alert(`Error: ${chrome.runtime.lastError.message}`);
-
+            reject({status: 'error', message: chrome.runtime.lastError.message});
             return;
           }
+
           if (injectionResults && injectionResults.length > 0) {
             const result = injectionResults[0].result;
-
-            if (result && result.status === 'success') {
-              console.log(`Locale was changed to ${selectedParameter.value}!`);
-            } else {
-              alert(`Error changing locale: ${result ? result.message : 'Unknown error'}`);
-            }
+            resolve(result);
           } else {
-            console.error('No results from script injection.');
+            reject({status: 'error', message: 'No results from script injection.'});
           }
         }
       );
-    }
+    });
   });
 }

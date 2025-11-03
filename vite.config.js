@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 // vite.config.js
-import {defineConfig} from 'vite';
 import vue from '@vitejs/plugin-vue';
+import {defineConfig} from 'vite';
 import webExtension, {readJsonFile} from 'vite-plugin-web-extension';
 
 function generateManifest() {
@@ -17,14 +17,6 @@ function generateManifest() {
 }
 
 export default defineConfig({
-  // resolve: {
-  //   alias: {
-  //     '@': path.resolve(__dirname, './src'),
-  //   },
-  //   // В некоторых случаях, особенно при проблемах с ts-node,
-  //   // вам может понадобиться это, но обычно это не требуется.
-  //   extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
-  // },
   base: '',
   plugins: [
     vue(),

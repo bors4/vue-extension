@@ -1,5 +1,5 @@
 {
-  "printWidth": 125,
+  "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
@@ -11,5 +11,7 @@
   "arrowParens": "always",
   "rangeStart": 0,
   "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "ignore",
+  "vueIndentScriptAndStyle": true,
   "endOfLine": "lf"
 }

@@ -1,5 +1,5 @@
 <template>
-  <button class="button-confirm" @click="emitConfirm">Change</button>
+  <button class="button-confirm" @click="emitConfirm">Выполнить</button>
 </template>
 
 <script setup>
@@ -13,11 +13,14 @@ const emitConfirm = () => {
 <style scoped>
 .button-confirm {
   display: flex;
-  min-width: 70px;
+  min-width: 90px;
+  max-height: 25px;
   flex-direction: column;
-  align-items: center;
-  padding: 6px 10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  padding: 4px 6px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.05rem;
+  font-weight: 620;
   border-radius: 6px;
   border: none;
   color: #fff;
@@ -25,12 +28,17 @@ const emitConfirm = () => {
   background-origin: border-box;
   box-sizing: border-box;
   white-space: nowrap;
-  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
   user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   margin-bottom: 10px;
   margin-left: 5px;
   cursor: pointer;
+}
+
+.button-confirm:hover {
+  background: linear-gradient(180deg, #2e82ff 0%, #276ff6 100%);
+}
+.button-confirm:focus-visible {
+  outline: 3px solid rgba(46,130,255,.6);
+  outline-offset: 2px;
 }
 </style>

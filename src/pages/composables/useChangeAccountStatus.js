@@ -1,5 +1,6 @@
 import {ref} from 'vue';
-import {chromeTabQuery} from '../helper/chromeTabQuery.js';
+
+import {chromeTabQuery} from '../helper/chromeTabQuery';
 
 export function changeAccStatus(status = 'light') {
   const selectedStatus = ref(status);
