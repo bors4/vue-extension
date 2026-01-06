@@ -1,6 +1,5 @@
 hr {
   margin: 0px 30px 20px;
-  color: black;
 }
 
 hr.gradient-line {
@@ -12,14 +11,25 @@ hr.gradient-line {
 body {
   width: 600px;
   height: 500px;
-  background-image: linear-gradient(to top, #0b0033d7 0%, #002565 20%, #133d85e2 80%);
+  background-image: radial-gradient(circle at center, #3f51b5, #293f66);
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
 }
 
 .option-container {
   display: grid;
+  grid-template-columns:
+    minmax(150px, 200px) /* метка — фиксированная ширина */
+    1fr /* контейнер с параметрами — растягивается */
+    100px; /* кнопка — фиксированная */
+
+  gap: 8px;
+  padding: 5px 10px 2px;
+  margin: 5px;
   align-items: stretch;
-  grid-template-columns: 4fr 5fr 1fr;
-  padding-right: 10px;
 }
 
 .footer-container {
@@ -28,6 +38,5 @@ body {
   bottom: 0;
   width: 100%;
   background-color: rgba(255, 132, 0, 0.673);
-  color: white;
   text-align: center;
 }

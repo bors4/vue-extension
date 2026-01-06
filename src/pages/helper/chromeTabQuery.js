@@ -8,12 +8,11 @@ export function chromeTabQuery(selectedParameter, appModule, queryParameter) {
     method: queryParameter,
     args: selectedParameter.value,
   };
-  // console.log(command)
   const queryOptions = {active: true, currentWindow: true};
   return new Promise((resolve, reject) => {
     chrome.tabs.query(queryOptions, (tabs) => {
       if (!tabs[0]) {
-        reject({status: 'error', message: 'No active tab found.'});
+        reject(new Error('No active tab found.'));
         return;
       }
 
@@ -24,10 +23,10 @@ export function chromeTabQuery(selectedParameter, appModule, queryParameter) {
           func: executePiniaCommand,
           args: [command],
         },
-        (injectionResults) => {
+          (injectionResults) => {
           if (chrome.runtime.lastError) {
             console.error('Script injection failed:', chrome.runtime.lastError.message);
-            reject({status: 'error', message: chrome.runtime.lastError.message});
+            reject(new Error('Script injection failed: ' + chrome.runtime.lastError.message));
             return;
           }
 
@@ -35,7 +34,7 @@ export function chromeTabQuery(selectedParameter, appModule, queryParameter) {
             const result = injectionResults[0].result;
             resolve(result);
           } else {
-            reject({status: 'error', message: 'No results from script injection.'});
+            reject(new Error('No results from script injection.'));
           }
         }
       );

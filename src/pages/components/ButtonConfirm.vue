@@ -24,7 +24,9 @@ const emitConfirm = () => {
   border-radius: 6px;
   border: none;
   color: #fff;
-  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+  text-shadow:
+    1px 1px 0 #00158d;
+  background: linear-gradient(180deg, #615ff3 0%, #035f40b2 100%);
   background-origin: border-box;
   box-sizing: border-box;
   white-space: nowrap;
@@ -37,8 +39,9 @@ const emitConfirm = () => {
 .button-confirm:hover {
   background: linear-gradient(180deg, #2e82ff 0%, #276ff6 100%);
 }
+
 .button-confirm:focus-visible {
-  outline: 3px solid rgba(46,130,255,.6);
+  outline: 3px solid rgba(46, 130, 255, .6);
   outline-offset: 2px;
 }
 </style>

@@ -1,7 +1,7 @@
 {
   "name": "Change Pinia state",
   "description": "Run commands to control current state Pinia App",
-  "version": "0.0.1",
+  "version": "1.2.0",
   "author": "a.bilyk",
   "{{chrome}}.manifest_version": 3,
   "{{firefox}}.manifest_version": 2,
@@ -11,13 +11,13 @@
   "{{chrome}}.action": {
     "default_popup": "src/popup.html",
     "default_icon": {
-      "16": "icon/16.png",
-      "32": "icon/32.png"
+      "16": "icon/logo.png",
+      "32": "icon/logo.png"
     }
   },
   "{{firefox}}.browser_action": {
     "default_popup": "src/popup.html",
-    "default_icon": "icon/16.png"
+    "default_icon": "icon/logo.png"
   },
   "permissions": ["scripting", "tabs", "clipboardRead", "clipboardWrite"],
   "host_permissions": ["<all_urls>"]

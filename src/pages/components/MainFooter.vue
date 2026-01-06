@@ -1,10 +1,10 @@
 <template>
     <div>
         <a href="">
-            <img src="../assets/icons/confluence-icon.svg" title="Ссылка на страницу Confluence">
+            <img src="../assets/icons/confluence-icon.svg" title="Ссылка на страницу Confluence" alt="">
         </a>
         <a href="">
-            <img src="../assets/icons/slack-icon.svg" title="Ссылка на мой Slack">
+            <img src="../assets/icons/slack-icon.svg" title="Ссылка на мой Slack" alt="">
         </a>
     </div>
 

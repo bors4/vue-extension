@@ -3,18 +3,18 @@
 </template>
 
 <script setup>
-import { useShowExtensionHeader } from '../composables/useExtensionHeaderTitle'
+import { useShowExtensionHeader } from '../utils/useExtensionHeaderTitle'
 
-const {title} = useShowExtensionHeader('Welcome to Extension');
+const { title } = useShowExtensionHeader('Welcome to Extension');
 
 </script>
 
 <style scoped>
 .extension-header {
   text-align: center;
-  font-family: Pangolin;
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-family: 'Pangolin', 'Arial Black', Gadget, sans-serif;
+  font-size: 33px;
+  margin-bottom: 20px;
 }
 
 .loading-text {
@@ -37,5 +37,4 @@ const {title} = useShowExtensionHeader('Welcome to Extension');
   font-weight: normal;
   font-style: normal;
 }
-
 </style>

@@ -1,12 +1,6 @@
 /* eslint-disable no-console */
 
 export function executePiniaCommand(command) {
-  // const command = {
-  //     action: 'callPiniaAction',
-  //     store: appModule,
-  //     method: queryParameter,
-  //     args: selectedParameter.value
-  //   };
   return new Promise((resolve, reject) => {
     const checkPinia = (attempts = 0) => {
       const maxAttempts = 20;
@@ -21,6 +15,7 @@ export function executePiniaCommand(command) {
         }
 
         const {action} = command;
+
         if (action === 'callPiniaAction') {
           const {store: storeId, method} = command;
 
@@ -42,7 +37,6 @@ export function executePiniaCommand(command) {
 
           try {
             const result = fn();
-
             Promise.resolve(result)
               .then((res) => resolve({status: 'success', data: res}))
               .catch((e) => reject({status: 'error', message: e?.message || String(e)}));
