@@ -19,7 +19,7 @@ const { title } = useShowExtensionHeader('Welcome to Extension');
 
 .loading-text {
   place-self: center;
-  background: linear-gradient(120deg, rgb(0, 242, 255), rgba(74, 255, 180, 0.769), rgb(0, 242, 255)) -100%/ 200%;
+  background: linear-gradient(120deg, rgb(226, 226, 226), rgba(135, 136, 136, 0.769), rgb(226, 226, 226)) -100%/ 200%;
   background-clip: text;
   color: transparent;
   animation: shimmer 4s linear infinite

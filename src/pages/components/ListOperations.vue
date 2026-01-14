@@ -19,10 +19,9 @@
     <ButtonConfirm @confirm="handleChangeStatus"></ButtonConfirm>
   </div>
   <div class="option-container">
-
-    <label for="strings-array" title="Получает значения списка строковых по маске" class="header-label">Получить
+    <label title="Получает значения списка строковых по маске" class="header-label">Получить
       строковые:</label>
-    <div class="params-wrapper">
+    <div class="inner-container-wrap">
       <div class="inline-group">
         <textarea id="strings-array" v-model="insertStrings"
           placeholder="confirm_email.verify_to_continue,..."></textarea>
@@ -36,7 +35,7 @@
       GEO_CODE:</label>
     <div class="params-wrapper">
       <div class="inner-container-wrap">
-        <input id="current-geo" v-model="currentGeoCodeValue" :size="currentGeoCodeValue.length || 10"
+        <input id="current-geo" v-model="currentGeoCodeValue" :size="currentGeoCodeValue.length || 1"
           class="input-field" placeholder="---" disabled>
       </div>
     </div>
@@ -67,8 +66,9 @@
         <div class="inline-group">
           <textarea id="" v-model="insertNoCurrencyGames" placeholder="---"></textarea>
           <label for="currencyCode" class="input-label">Код валюты</label>
-          <input id="currencyCode" v-model="currencyCode" class="input-field" type="text" maxlength="3" inputmode="text"
-            pattern="[A-Za-z]{3}" />
+          <input id="currencyCode" v-model="currentGeoCodeValue" :size="currentGeoCodeValue.length || 3"
+            class="input-field currency-input" type="text" maxlength="3" pattern="[A-Za-z]{3}" placeholder="---"
+            disabled />
           <div class="tooltip">
             <svg width="20" height="20" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg"
               aria-label="Информация">
@@ -155,10 +155,12 @@ onMounted(async () => {
 
 <style lang="css" scoped>
 textarea {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 75%;
+  vertical-align: middle;
+  height: 32px;
+  /* Фиксированная высота в покое */
+  flex-grow: 1;
+  /* Позволяет текстовому полю занимать свободное место */
+  max-height: 70%;
   box-sizing: border-box;
   resize: none;
   padding-left: 10px;
@@ -169,37 +171,39 @@ textarea {
   transition: box-shadow 160ms ease, max-height 200ms ease;
 }
 
-  .params-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
-  }
+.params-wrapper input {
+  width: 100%;
+  min-width: 0;
+}
 
-  .params-wrapper .inline-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    max-height: 40px;
-  }
+.inline-group {
+  display: flex;
+  flex-direction: row;
+  /* Строго в ряд */
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
 
-  .params-wrapper input {
-    width: 100%;
-    min-width: 0;
-  }
+.params-wrapper .inline-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-height: 40px;
+}
 
-  .params-wrapper:focus-within {
-    z-index: 2000;
-  }
+.params-wrapper:focus-within {
+  z-index: 2000;
+}
 
-  .params-wrapper:focus-within #strings-array,
-  #strings-array:focus {
-    position: absolute;
-    height: 200px;
-    max-height: none;
-    z-index: 4000;
-    box-shadow: 0 8px 24px rgba(22, 12, 157, 0.6);
-  }
+.params-wrapper:focus-within #strings-array,
+#strings-array:focus {
+  position: initial;
+  height: 100px;
+  max-height: 100px;
+  z-index: 4000;
+  box-shadow: 0 8px 24px rgba(22, 12, 157, 0.6);
+}
 
 .label-wrap {
   font: Arial, Helvetica, sans-serif;
@@ -208,6 +212,10 @@ textarea {
 }
 
 .header-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Добавит три точки, если текст не влезет в 200px */
+  white-space: nowrap;
   color: rgb(254, 254, 254);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 14px;
@@ -219,8 +227,11 @@ textarea {
 }
 
 select {
+  height: 32px;
+  margin-bottom: 0;
+  /* Обнуляем */
+  width: 100%;
   padding-left: 10px;
-  margin-bottom: 10px;
   display: flex;
   min-width: 60px;
   color: white;
@@ -230,21 +241,32 @@ select {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 520;
   font-size: 13px;
-  background: rgb(59, 87, 124);
+  background: rgb(95, 98, 102);
 }
 
-.input-field{
-  display: block;
+.input-field {
   color: rgb(192, 192, 192);
   border-radius: 6px;
   border: 2px solid rgb(101, 168, 101);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 520;
   font-size: 13px;
-  width: fit-content;
   min-width: 20px;
+  box-sizing: content-box;
+  text-align: center;
+}
+
+.input-field.currency-input {
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 30px;
+  width: 40px;
   max-width: 50px;
-  box-sizing: border-box;
+  text-align: center;
+}
+
+.input-label {
+  color: #c8ccd4;
 }
 
 .input-field:disabled {
@@ -253,10 +275,9 @@ select {
 }
 
 .inner-container-wrap {
-  display: inline-flex;
-  width: fit-content;
-  max-width: 100%;
-  max-height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 input[type="checkbox"] {
@@ -332,6 +353,7 @@ input[type="checkbox"]:checked+.toggle span path {
 .tooltip {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .tooltip .tooltiptext {
